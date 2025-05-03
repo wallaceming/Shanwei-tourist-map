@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>星光筑梦 活力汕尾-五一汕尾旅游活动地图</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>星光筑梦 活力汕尾-五一汕尾旅游活动地图</h1>
+            <p class="subtitle">2024年五一假期汕尾精彩活动一网打尽</p>
+        </header>
+
+        <!-- 添加调试信息框 -->
+        <div id="debug-panel" class="debug-panel" style="display:none;">
+            <div class="debug-header">
+                <h3>路线规划调试信息</h3>
+                <button onclick="clearDebug()" class="clear-btn">清除</button>
+            </div>
+            <div id="debug-content" class="debug-content"></div>
+        </div>
+
+        <div class="content-wrapper">
+            <!-- 路线规划面板 -->
+            <div class="route-panel">
+                <button class="toggle-route" title="切换路线规划">
+                    <span>路线规划</span>
+                </button>
+                <div class="panel-content">
+                    <div class="panel-header">
+                        <h2>路线规划</h2>
+                    </div>
+                    <div class="route-planning">
+                        <div class="form-group">
+                            <label for="stayPoint">住宿地点</label>
+                            <input type="text" id="stayPoint" placeholder="请输入您的住宿地点">
+                        </div>
+                        <div class="form-group">
+                            <label for="startDate">开始日期</label>
+                            <input type="date" id="startDate">
+                        </div>
+                        <div class="form-group">
+                            <label for="planDays">规划天数</label>
+                            <select id="planDays">
+                                <option value="1">1天</option>
+                                <option value="2">2天</option>
+                                <option value="3">3天</option>
+                                <option value="4">4天</option>
+                                <option value="5">5天</option>
+                            </select>
+                        </div>
+                        <button onclick="planRoute()">开始规划</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 景点列表面板 -->
+            <div class="locations-panel">
+                <button class="toggle-panel" title="切换景点列表">
+                    <span>景点列表</span>
+                </button>
+                <div class="panel-content">
+                    <div class="panel-header">
+                        <h2>景点列表</h2>
+                        <div class="search-box">
+                            <input type="text" id="search-input" placeholder="搜索景点...">
+                        </div>
+                        <div class="filter-chips" id="filter-chips">
+                            <button class="chip active" data-type="all">全部</button>
+                            <button class="chip" data-type="市级景点">市级景点</button>
+                            <button class="chip" data-type="区县级景点">区县级</button>
+                            <button class="chip" data-type="兴趣点">兴趣点</button>
+                        </div>
+                    </div>
+                    <div class="locations-list" id="locations-list">
+                        <!-- 景点列表将通过 JavaScript 动态生成 -->
+                    </div>
+                </div>
+            </div>
+            <div id="map-container"></div>
+        </div>
+        <div id="loading">地图加载中...</div>
+        <div id="error" style="display: none; color: red;"></div>
+        <!-- 添加错误信息弹窗 -->
+        <div id="error-modal" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); 
+            background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.2); z-index: 9999;">
+            <h3 style="margin-top: 0;">错误信息</h3>
+            <pre id="error-details" style="background: #f5f5f5; padding: 10px; border-radius: 4px; white-space: pre-wrap;"></pre>
+            <button onclick="document.getElementById('error-modal').style.display='none'" 
+                style="background: #0071e3; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">
+                关闭
+            </button>
+        </div>
+    </div>
+    
+    <!-- 脚本引用 -->
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 
